@@ -1,0 +1,30 @@
+﻿@page
+@model Mismanagement.Pages.Departments.ListModel
+@{
+}
+<h3 class="font-weight-bold" style="color:cadetblue">Departments </h3>
+
+<table class="table">
+    @if (Model.DepartmentList != null)
+    {
+        @foreach (var department in Model.DepartmentList)
+        {
+            <tr>
+                <td>@department.Name</td>               
+                <td>
+                    <a class="btn btn-lg"
+                       asp-page="./Detail"
+                       asp-route-projectId="@department.DepartmentId">
+                        <i class="glyphicon glyphicon-zoom-in"></i>Detail
+                    </a>
+                    <a class="btn btn-lg"
+                       asp-page="./Edit"
+                       asp-route-projectId="@department.DepartmentId">
+                        Edit
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    }
+</table>

@@ -1,0 +1,42 @@
+﻿@page  "{ProjectId:int}"
+@model Mismanagement.Pages.Projects.DetailModel
+@{
+}
+
+<h3  class="font-weight-bold" style="color:cadetblue">Details </h3>
+
+<div>
+    Name: @Model.ProjectDetail.Name
+</div>
+<div>
+    Description: @Model.ProjectDetail.Description
+</div>
+<div>
+        Department: @Model.ProjectDetail.Department?.Name
+    </div>
+
+<div>Tasks list </div>
+<table class="table">
+    @foreach (var task in Model.ProjectDetail.Task)
+    {
+        <tr>
+            <td>@task.Name</td>
+            <td>
+                <a class="btn btn-sm btn-secondary"
+                   asp-page="./Detail"
+                   asp-route-projectId="@task.TaskId">
+                    <i class="glyphicon glyphicon-edit">View</i>
+                </a>
+                <a class="btn btn-sm btn-secondary"
+                   asp-page="./Edit"
+                   asp-route-projectId="@task.TaskId">                   
+                    <i class="glyphicon glyphicon-edit">Edit</i>
+                </a>
+            </td>
+        </tr>
+    }
+    </table>
+
+        <a asp-page=".\Edit" class="btn btn-primary">Add New Task</a>
+    <a asp-page="./List" class="btn btn-secondary">All Projects</a>
+

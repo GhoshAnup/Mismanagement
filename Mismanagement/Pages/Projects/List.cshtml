@@ -1,0 +1,30 @@
+﻿@page
+@model ListModel
+@{
+}
+<h3  class="font-weight-bold" style="color:cadetblue">Projects </h3>
+
+<table class="table">
+    @if (Model.ProjectList != null)
+    {
+        @foreach (var project in Model.ProjectList)
+        {
+            <tr>
+                <td>@project.Name</td>
+                <td>@project.Description</td>               
+                <td>
+                    <a class="btn btn-sm btn-secondary"
+                       asp-page="./Detail"
+                       asp-route-projectId="@project.ProjectId">
+                        <i class="glyphicon glyphicon-zoom-in"></i>View
+                    </a>
+                    <a class="btn btn-sm btn-secondary"   
+                       asp-page="./Edit"
+                       asp-route-projectId="@project.ProjectId"> Edit
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    }
+</table>

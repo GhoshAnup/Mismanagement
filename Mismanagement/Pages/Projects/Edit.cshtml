@@ -1,0 +1,28 @@
+﻿@page  "{ProjectId:int}"
+@model Mismanagement.Pages.Projects.EditModel
+@{
+}
+
+<h2>Editing @Model.Project.Name</h2>
+<form method="post">
+
+    <input type="hidden" asp-for="Project.ProjectId" />
+    <div class="form-group">
+        <label asp-for="Project.Name"></label>
+        <input asp-for="Project.Name" class="form-control" />
+        <span class="text-danger" asp-validation-for="Project.Name"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Project.Description"></label>
+        <input asp-for="Project.Description" class="form-control" />
+        <span class="text-danger" asp-validation-for="Project.Description"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Project.DepartmentId"></label>
+        <select class="form-control" asp-for="Project.DepartmentId"
+                asp-items="Model.Departments"></select>
+        <span class="text-danger" asp-validation-for="Project.DepartmentId"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
